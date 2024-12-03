@@ -183,40 +183,8 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Rigidbody rBody = hit.collider.attachedRigidbody;
-
-        if (rBody != null)
-        {
-            Vector3 pushDirection = new Vector3 (moveDirection.x, 0, moveDirection.z);
-            rBody.velocity = pushDirection * _pushForce / rBody.mass;
-        }
-    }
-
-    void RayTest()
-    {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward,out hit, 10))
-        {
-            Debug.Log(hit.transform.name);
-            Debug.Log(hit.transform.position);
-            Debug.Log(hit.transform.gameObject.layer);
-
-            if(hit.transform.gameObject.tag == "Enemy")
-            {
-                Enemy enemyScrip = hit.transform.gameObject.GetComponent<Enemy>();
-
-                enemyScrip.TakeDamage();
-            }
-        }
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(_sensorPosition.position, _sensorRadius);
-    }
 }
+
+
 
 
