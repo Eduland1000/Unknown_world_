@@ -64,29 +64,13 @@ public class PlayerController : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
        
-       // Movement();
-       
-
-    if(Input.GetButton("Fire2"))
-    {
-        AimMovement(); //No hacer-lo
-    }
-    else
-    {
-        Movement();
-    }
-    
+       Movement();
     
     if(Input.GetButtonDown("Jump") && IsGrounded())
     {
         Jump();
     }
        Gravity();
-
-       if (Input.GetKeyDown(KeyCode.F))
-        {
-            RayTest();
-        }
     }
 
     
@@ -95,8 +79,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 direction = new Vector3(_horizontal, 0, _vertical);
         
-        _animator.SetFloat("VelZ",direction.magnitude);
-        _animator.SetFloat("VelX", 0);
+        // _animator.SetFloat("VelZ",direction.magnitude);
+        // _animator.SetFloat("VelX", 0);
     
         if(direction != Vector3.zero)
         {
@@ -157,32 +141,12 @@ public class PlayerController : MonoBehaviour
         _playerGravity.y = Mathf.Sqrt(_jumpHeight * -2 * _gravity);
     }
 
-    /*bool IsGrounded()
-    {
-        return Physics.CheckSphere(_sensorPosition.position, _sensorRadius, _groundLayer);
-    }*/
-    
     bool IsGrounded()
     {
-        RaycastHit hit;
-        if(Physics.Raycast(_sensorPosition.position, -transform.up, out hit, 2))
-        {
-            if(hit.transform.gameObject.layer == _groundLayer)
-            {
-                Debug.DrawRay(_sensorPosition.position, -transform.up * 2, Color.green);
-                return true;
-            }
-            else
-            {
-                Debug.DrawRay(_sensorPosition.position, -transform.up * 2, Color.red);
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
+        return Physics.CheckSphere(_sensorPosition.position, _sensorRadius, _groundLayer);
     }
+    
+
 }
 
 
