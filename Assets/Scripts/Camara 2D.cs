@@ -5,10 +5,10 @@ using UnityEngine;
 public class Camara2D : MonoBehaviour
 
 {
-  public Transform personaje;  // El transform del personaje
-    public float offsetX = 5f;   // Distancia horizontal desde el personaje
-    public float offsetY = 2f;   // Distancia vertical desde el personaje
-    public float smoothSpeed = 0.125f; // Velocidad de suavizado de la cámara
+  public Transform personaje;  
+    public float offsetX = 5f;   
+    public float offsetY = 2f;   
+    public float smoothSpeed = 0.125f; 
     
     void LateUpdate()
     {
